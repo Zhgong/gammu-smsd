@@ -1,0 +1,1 @@
+# gammu-smsd配置
