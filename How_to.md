@@ -1,8 +1,14 @@
 # SMS; Huawei E173; gammu
 
 ## 1. usb-modeswitch
-before
+
+### install usb-modeswitch usb-modeswitch-data
 ```sh
+pi@ubuntu:~/gammu-sms $ sudo apt-get install usb-modeswitch usb-modeswitch-data
+```
+
+before
+```bash
 pi@ubuntu:~/gammu-sms $ lsusb
 Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
 ```
@@ -13,12 +19,9 @@ Bus 001 Device 003: ID 12d1:1436 Huawei Technologies Co., Ltd. Broadband stick
 Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
 ```
 
-## install usb-modeswitch usb-modeswitch-data
-```sh
-pi@ubuntu:~/gammu-sms $ sudo apt-get install usb-modeswitch usb-modeswitch-data
-```
 
-## 配置到Modem模式，否则没有/dev/ttyUSB*,此种情况说明3G网卡没有被配置成功
+
+### 配置到Modem模式，否则没有/dev/ttyUSB*,此种情况说明3G网卡没有被配置成功
 ```sh
 pi@ubuntu:~/gammu-sms $ sudo vim /etc/usb_modeswitch.d/E173.conf
 
@@ -76,5 +79,50 @@ terminfo/     timezone      tmpfiles.d/   triggerhappy/                         
 pi@ubuntu:~ $ ls /dev/                                                                              Wed 2020/12/16 16:00:32 gammu-smsd[3493]: Error at init connection: Error opening device, it doesn't
 Display all 183 possibilities? (y or n)                                                               exist. 
 ```
+### config /etc/gammu-smsdc
+```sh
+# Configuration file for Gammu SMS Daemon
 
-gammu detect will list all the usb ports
+# Gammu library configuration, see gammurc(5)
+[gammu]
+# Please configure this!
+#port = /dev/ttyUSB0
+port = /dev/ttyUSB1
+connection = at
+# Debugging
+#logformat = textall
+
+# SMSD configuration, see gammu-smsdrc(5)
+[smsd]
+service = files
+#logfile = syslog
+logfile = /var/log/gammu-smsd
+# Increase for debugging information
+debuglevel = 4
+ReceiveFrequency = 5
+PIN = 1234
+
+# Paths where messages are stored
+inboxpath = /var/spool/gammu/inbox/
+outboxpath = /var/spool/gammu/outbox/
+sentsmspath = /var/spool/gammu/sent/
+errorsmspath = /var/spool/gammu/error/
+
+# Format, 否则inbox/下面的中文短信为乱码
+InboxFormat = unicode
+```
+
+## usefull command
+**gammu detect** 
+
+**gammu identify**  
+
+
+## LED blink of Huawei E173
+- Green (blinking twice every 3s): The USB Stick is powered on
+- Green ( blinking once every 3s): The USB Stick is registering with a 2G - network.
+- Blue (blinking once every 3s): The USB Stick is registering with a 3G/3G+ - network.
+- Green (solid): The USB Stick is connected to a 2G network
+- Blue (solid): The USB Stick is connected to a 3G network
+- Cyan (solid): The USB Stick is connected to a 3G+ network
+- Off: The USB Stick is removed
