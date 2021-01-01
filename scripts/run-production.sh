@@ -1,6 +1,5 @@
 #!/bin/bash
 echo Starting ...
-docker run -it -d --env-file .env_docker -e PRODUCTION=1 -e MINUTELY=1 --mount type=bind,source="$(pwd)"/data,target=/root/data --name summary summary:latest
 REL_DIR=$(dirname $(dirname $0))
 echo $REL_DIR
 DIR=$(realpath $REL_DIR)
