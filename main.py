@@ -10,8 +10,8 @@ URL = f"https://api.telegram.org/bot{config.TOKEN}/sendMessage"
 
 def send_message(text: str):
     data = {"chat_id": config.CHAT_ID, "text": text}
-    requests.post(url=URL, data=data)
-
+    res = requests.post(url=URL, data=data)
+    print(res.content)
 
 sms_checker = smschecker.SMS_CHECKER()
 sent_sms = []

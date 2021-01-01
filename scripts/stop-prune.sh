@@ -1,0 +1,3 @@
+#!/bin/bash
+echo stopping and prune ...
+docker stop gammu-smsd && docker container prune -f

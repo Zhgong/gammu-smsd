@@ -36,14 +36,14 @@ port: ```at19200```
 # Gammu library configuration, see gammurc(5)
 [gammu]
 # Please configure this!
-port = /dev/ttyUSB1
+port = /dev/ttyUSB0
 connection = at19200
 # Debugging
 #logformat = textall
 
 # SMSD configuration, see gammu-smsdrc(5)
 [smsd]
-RunOnReceive = /home/pi/gammu-sms/receive-sms.sh
+RunOnReceive = /root/receive-sms.sh
 service = files
 logfile = /var/log/gammu-smsd.log
 # Increase for debugging information
