@@ -2,7 +2,7 @@
 
 参考连接: [Raspberry Pi 树莓派收短信，转发至Telegram](http://wenbinwu.com/%E7%82%B9%E7%82%B9%E6%BB%B4%E6%BB%B4/2018/04/25/raspberry-pi-sms.html)
 
-不需要~~usbmodeswtich~~
+
 ## 1. 通过命令行lsusb查看
 
 ```bash
@@ -72,6 +72,17 @@ $DIR/venv/bin/python -u $DIR/main.py >> /var/log/recieve-sms.log
 **gammu detect** 
 
 **gammu identify**  
+
+### usbmodeswtich
+```$ sudo vim /etc/usb_modeswitch.d/E173.conf```
+
+```bash
+DefaultVendor=0x12d1
+DefaultProduct=0x1446
+CheckSuccess=20
+MessageContent="55534243123456780000000000000011062000000100000000000000000000"
+```
+
 
 
 ## LED blink of Huawei E173
