@@ -45,6 +45,8 @@ docker run -it -d --env-file .env \
 --mount type=bind,source=$DIR/receive-sms.log,target=/var/log/receive-sms.log \
 --name gammu-smsd gammu-smsd:latest
 ```
+## inspect restarts
+docker inspect -f "{{ .RestartCount }}"
 
 
 ## [How to from scrath](How_to.md)

@@ -14,7 +14,7 @@ RunOnReceive = /root/receive-sms.sh
 service = files
 logfile = /var/log/gammu-smsd.log
 # Increase for debugging information
-debuglevel = 255
+debuglevel = 4
 
 # Paths where messages are stored
 inboxpath = /var/spool/gammu/inbox/
