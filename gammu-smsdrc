@@ -12,7 +12,7 @@ connection = at19200
 [smsd]
 RunOnReceive = /root/receive-sms.sh
 service = files
-logfile = /var/log/gammu-smsd.log
+logfile = /var/spool/gammu/gammu-smsd.log
 # Increase for debugging information
 debuglevel = 4
 
