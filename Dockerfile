@@ -13,6 +13,6 @@ RUN python -m venv venv \
 COPY gammu-smsdrc /etc/gammu-smsdrc
 
 COPY src ./src
-COPY main.py watch_status.sh receive-sms.sh boot.sh config.py ./
-RUN chmod +x watch_status.sh receive-sms.sh boot.sh
+COPY main.py watch_status.sh receive-sms.sh boot.sh backup-log.sh config.py ./
+RUN chmod +x watch_status.sh receive-sms.sh boot.sh backup-log.sh 
 ENTRYPOINT ["./boot.sh"]
