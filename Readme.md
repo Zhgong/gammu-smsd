@@ -77,3 +77,6 @@ Wed 2021/01/27 22:24:43 gammu-smsd[8]: gammu: 1 "^STIN:1,1,0"
 ## [How to from scrath](How_to.md)
 
 [telegram api](https://core.telegram.org/bots/api)
+
+## Structure
+![](./documents/structure.drawio.svg)
