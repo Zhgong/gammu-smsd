@@ -1,0 +1,14 @@
+[Unit]
+Description=check gammu-smsd in container
+After=network.target
+
+[Service]
+ExecStart=/bin/bash -c '/home/ubuntu/gammu-smsd/check-sms-data-received.sh > /home/ubuntu/gammu-smsd/gammu-data/check-sms-data-received.log 2>&1'
+WorkingDirectory=/home/ubuntu/gammu-smsd
+StandardOutput=inherit
+StandardError=inherit
+Restart=always
+User=ubuntu
+
+[Install]
+WantedBy=multi-user.target
