@@ -5,7 +5,7 @@
 # restart the container
 function sms_status(){
     KEY_WORDS="SMS status received"
-    FILE=/home/ubuntu/gammu-smsd/gammu-data/gammu-smsd.log
+    FILE=/home/pi/gammu-smsd/gammu-data/gammu-smsd.log
 
     # find in the last 200 lines, how many times "SMS status recieved" appeared
     COUNT=$(tail -n 200 $FILE | grep -c "$KEY_WORDS")

@@ -3,12 +3,12 @@ Description=check gammu-smsd in container
 After=network.target
 
 [Service]
-ExecStart=/bin/bash -c '/home/ubuntu/gammu-smsd/check-sms-data-received.sh > /home/ubuntu/gammu-smsd/gammu-data/check-sms-data-received.log 2>&1'
-WorkingDirectory=/home/ubuntu/gammu-smsd
+ExecStart=/bin/bash -c '/home/pi/gammu-smsd/check-sms-data-received.sh > /home/pi/gammu-smsd/gammu-data/check-sms-data-received.log 2>&1'
+WorkingDirectory=/home/pi/gammu-smsd
 StandardOutput=inherit
 StandardError=inherit
 Restart=always
-User=ubuntu
+User=pi
 
 [Install]
 WantedBy=multi-user.target
