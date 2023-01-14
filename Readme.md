@@ -23,9 +23,12 @@ docker run -it -d --env-file .env \
 --name gammu-smsd gammu-smsd:latest
 ```
 
+
+
 ### Running with binding log data
 The following command will run docker and bind:
 
+Create following folder or file, which will be bind to container
 - gammu-data:
     - inbox
     - outbox
@@ -37,6 +40,7 @@ The following command will run docker and bind:
 - gammu-smsd.log
 - receive-sms.log
 
+### Use image from docker hub (for amd64)
 ```bash
 docker run -it -d --env-file .env \
 --device=/dev/ttyUSB0 \
@@ -45,6 +49,12 @@ docker run -it -d --env-file .env \
 --mount type=bind,source=$DIR/receive-sms.log,target=/var/log/receive-sms.log \
 --name gammu-smsd gammu-smsd:latest
 ```
+
+### Use image from docker hub (for Raspberry Pi)
+```bash
+docker run -it -d --env-file .env --device=/dev/ttyUSB0 --mount type=bind,source=$DIR/gammu-data,target=/var/spool/gammu --mount type=bind,source=$DIR/gammu-smsd.log,target=/var/log/gammu-smsd.log --mount type=bind,source=$DIR/receive-sms.log,target=/var/log/receive-sms.log --name gammu-smsd seangongz/gammu-smsd:arm64v8
+```
+
 ## inspect restarts
 docker inspect -f "{{ .RestartCount }}"
 
