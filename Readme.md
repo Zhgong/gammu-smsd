@@ -81,7 +81,7 @@ Wed 2021/01/27 22:24:43 gammu-smsd[8]: gammu: 1 "^STIN:1,1,0"
 3. if not found (count is 0): restart container
 4. check 1-3 every minutes
 
-
+> use `check-ms-data-received.sh` as service to do the job :)
 
 
 ## [How to from scrath](How_to.md)
