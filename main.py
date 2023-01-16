@@ -1,6 +1,18 @@
 import logging
-import config
+
 import requests
+import sentry_sdk
+
+import config
+
+sentry_sdk.init(
+    dsn=config.DSN,
+
+    # Set traces_sample_rate to 1.0 to capture 100%
+    # of transactions for performance monitoring.
+    # We recommend adjusting this value in production.
+    traces_sample_rate=1.0
+)
 from src import smschecker
 
 logging.basicConfig(

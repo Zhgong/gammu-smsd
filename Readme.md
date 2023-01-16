@@ -52,7 +52,12 @@ docker run -it -d --env-file .env \
 
 ### Use image from docker hub (for Raspberry Pi)
 ```bash
-docker run -it -d --restart unless-stopped --env-file .env --device=/dev/ttyUSB0 --mount type=bind,source=$DIR/gammu-data,target=/var/spool/gammu --mount type=bind,source=$DIR/gammu-data/gammu-smsd.log,target=/var/log/gammu-smsd.log --mount type=bind,source=$DIR/gammu-data/receive-sms.log,target=/var/log/receive-sms.log --name gammu-smsd seangongz/gammu-smsd:arm64v8
+docker run -it -d --restart unless-stopped \
+--env-file .env --device=/dev/ttyUSB0 \
+--mount type=bind,source=$DIR/gammu-data,target=/var/spool/gammu \
+--mount type=bind,source=$DIR/gammu-data/gammu-smsd.log,target=/var/log/gammu-smsd.log \
+--mount type=bind,source=$DIR/gammu-data/receive-sms.log,target=/var/log/receive-sms.log \
+--name gammu-smsd seangongz/gammu-smsd:arm64v8
 ```
 
 ## inspect restarts
